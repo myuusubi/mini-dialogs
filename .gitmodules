@@ -1,0 +1,3 @@
+[submodule "tinyfd"]
+	path = tinyfd
+	url = git@github.com:myuusubi/tinyfiledialogs.git
