@@ -53,30 +53,80 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #include "mini_dlg.h"
+
+static inline MDLGChar* path_allocate_copy( MDLGChar* path );
+static inline void path_deallocate( MDLGChar* path );
+
+MDLGChar* path_allocate_copy( MDLGChar* path ) {
+	if( path == ( MDLGChar* ) 0 ) {
+		return ( MDLGChar* ) 0;
+	}
+
+	size_t path_length = 0;
+	for( ; path[path_length] != MDLG_NULL_TERM; ++path_length ) {
+
+	}
+
+	MDLGChar* new_path = malloc( sizeof( MDLGChar ) * ( path_length + 1 ) );
+	memcpy( new_path, path, sizeof( MDLGChar ) * path_length );
+	new_path[path_length] = MDLG_NULL_TERM;
+
+	return new_path;
+}
+
+void path_deallocate( MDLGChar* path ) {
+	free( path );
+}
 
 int main() {
 	int result_int;
 	MDLGChar* result_path;
 
-	result_int = mini_dlg_message_box( "Example Message", "Hello World", MDLG_MSG_OK, MDLG_ICON_INFO, MDLG_BUTTON_OK );
+	// Demonstrate a basic message box
+	mini_dlg_message_box( "Example Error Box", "Hello World", MDLG_MSG_OK, MDLG_ICON_ERROR, MDLG_BUTTON_OK );
 
-	result_path = mini_dlg_file_opener( "Example File Opener", ( MDLGChar const* ) 0, 0, ( MDLGChar const* const* ) 0, ( char const* ) 0 );
+	uint32_t counter = 0;
 
-	char const* const txt_filter[] = {
-		"*.txt"
-	};
-	size_t const txt_filter_len = sizeof( txt_filter ) / sizeof( txt_filter[0] );
-	result_path = mini_dlg_file_opener( "Example .txt Opener", result_path, txt_filter_len, txt_filter, "Text Document (.txt)" );
+	// Demonstrate option checking
+	do {
+		result_int = mini_dlg_message_box( "Example Options", "You must click yes", MDLG_MSG_YESNO, MDLG_ICON_INFO, MDLG_BUTTON_NO );
+		++counter;
+	} while( result_int != MDLG_BUTTON_YES );
 
+	if( counter <= 1 ) {
+		mini_dlg_message_box( "Achievement: Obedience", "You are too obedient...", MDLG_MSG_OK, MDLG_ICON_WARNING, MDLG_BUTTON_OK );
+	} else if( counter == 2 ) {
+		mini_dlg_message_box( "Achievement: Balance", "Perfectly balanced.", MDLG_MSG_OK, MDLG_ICON_INFO, MDLG_BUTTON_OK );
+	} else {
+		char buffer[256];
+		sprintf( buffer, "You pressed No %u times... Why?", counter );
+		mini_dlg_message_box( "Achievement: Rebellious", buffer, MDLG_MSG_OK, MDLG_ICON_QUESTION, MDLG_BUTTON_OK );
+	}
+
+	// Demonstrate a basic file opener with no parameters
+	result_path = mini_dlg_file_opener( "File Opener", ( MDLGChar const* ) 0, 0, ( char const* const* ) 0, ( char const* ) 0 );
+
+	// Copy the path of the last file, and use it as the default
+	MDLGChar* default_path = path_allocate_copy( result_path );
+	result_path = mini_dlg_file_opener( "Default Path", default_path, 0, ( char const* const* ) 0, ( char const* ) 0 );
+	path_deallocate( default_path );
+
+	// Demonstrate using a single filter
+	char const* txt_filter = "*.txt";
+	result_path = mini_dlg_file_opener( ".txt Opener", ( MDLGChar const* ) 0, 1, &txt_filter, "Text Document (.txt)" );
+
+	// Demonstrate usage of multiple filters
 	char const* const image_filter[] = {
 		"*.jpg",
 		"*.jpeg",
 		"*.png",
 	};
 	size_t const image_filter_len = sizeof( image_filter ) / sizeof( image_filter[0] );
-	result_path = mini_dlg_file_opener( "Example Image Opener", ( MDLGChar const* ) 0, image_filter_len, image_filter, ( char const* ) 0 );
+	result_path = mini_dlg_file_opener( "Image Opener", ( MDLGChar const* ) 0, image_filter_len, image_filter, ( char const* ) 0 );
 
 	return 0;
 }

@@ -18,7 +18,7 @@ are permitted provided that the following conditions are met:
    may be used to endorse or promote products derived from this software without 
    specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS”AND
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
 IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
@@ -53,6 +53,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 import os
+
+if not os.path.exists( os.path.join( "tinyfd", "tinyfiledialogs.h" ) ):
+	print( "[ERROR] Could not find \"tinyfd\" submodule\n" )
+	print( "Try \"git submodule update --init --recursive\"" )
+	exit( 1 )
 
 tinyfd_header_file = open( os.path.join( "tinyfd", "tinyfiledialogs.h" ), "r" )
 tinyfd_header_text = tinyfd_header_file.read()

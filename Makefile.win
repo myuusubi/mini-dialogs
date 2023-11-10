@@ -1,0 +1,16 @@
+all: build/example.exe
+
+CCFLAGS = /nologo /MT /O2 /std:c11 /DUNICODE /D_UNICODE
+
+build/example.obj: src/example/example.c src/example/mini_dlg.h src/mini_dlg_flat.h 
+	$(CC) $(CCFLAGS) /Fo:"build\\" /c src/example/example.c
+
+build/mini_dlg.obj: src/example/mini_dlg.c src/example/mini_dlg.h src/mini_dlg_flat.h 
+	$(CC) $(CCFLAGS) /Fo:"build\\" /c src/example/mini_dlg.c
+
+build/example.exe:  build/example.obj build/mini_dlg.obj
+	$(CC) $(CCFLAGS) /Fe:"build\example.exe" $** /link Shell32.lib user32.lib gdi32.lib winmm.lib Ole32.lib Ws2_32.lib Comdlg32.lib Mswsock.lib AdvApi32.lib
+
+clean:
+	del /Q /F /S "*.obj"
+	del /Q /F /S "*.exe"

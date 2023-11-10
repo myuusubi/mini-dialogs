@@ -99,6 +99,6 @@ void debug_free( void* ptr, const char* file, const char* function, int line ) {
 
    uintptr_t p = ( uintptr_t ) ptr;
 
-   sprintf( buffer, "[MEMORY] free(0x%lx), %s, %s:%i\n", p, file, function, line );
+   sprintf( buffer, "[MEMORY] free(0x%llx), %s, %s:%i\n", p, file, function, line );
    fputs( buffer, stdout );
 }
