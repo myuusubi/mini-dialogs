@@ -336,7 +336,7 @@ def make_line_static( text ):
 		return text
 	if stext[:6] == "static":
 		return text
-	return "static " + stext + "\n"
+	return "static " + text[text.find( stext ):]
 
 def make_static( text ):
 	scope_line = ""

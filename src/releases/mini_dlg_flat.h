@@ -539,7 +539,6 @@ static void RGB2Hex( unsigned char const aRGB[3], char aoResultHexRGB[8] )
 }
 
 static void tfd_replaceSubStr( char const * aSource, char const * aOldSubStr,
-
 						char const * aNewSubStr, char * aoDestination )
 {
 		char const * pOccurence ;
@@ -623,7 +622,6 @@ static void wipefile(char const * aFilename)
 }
 
 static int tfd_quoteDetected(char const * aString)
-
 {
 	char const * p;
 
@@ -655,15 +653,13 @@ static int tfd_quoteDetected(char const * aString)
 	return 0;
 }
 
-static char const * tinyfd_getGlobalChar(char const * aCharVariableName)
-
+static char const * tinyfd_getGlobalChar(char const * aCharVariableName) 
 {
 		if (!aCharVariableName || !strlen(aCharVariableName)) return NULL;
 		else return NULL ;
 }
 
-static int tinyfd_getGlobalInt(char const * aIntVariableName)
-
+static int tinyfd_getGlobalInt(char const * aIntVariableName) 
 {
 		if ( !aIntVariableName || !strlen(aIntVariableName) ) return -1 ;
 #ifdef _WIN32
@@ -671,8 +667,7 @@ static int tinyfd_getGlobalInt(char const * aIntVariableName)
 		else return -1;
 }
 
-static int tinyfd_setGlobalInt(char const * aIntVariableName, int aValue)
-
+static int tinyfd_setGlobalInt(char const * aIntVariableName, int aValue) 
 {
 		if (!aIntVariableName || !strlen(aIntVariableName)) return -1 ;
 #ifdef _WIN32
@@ -789,7 +784,6 @@ static int sizeMbcs(wchar_t const * aMbcsString)
 }
 
 static wchar_t* tinyfd_mbcsTo16(char const* aMbcsString)
-
 {
 	static wchar_t* lMbcsString = NULL;
 	int lSize;
@@ -807,7 +801,6 @@ static wchar_t* tinyfd_mbcsTo16(char const* aMbcsString)
 }
 
 static wchar_t * tinyfd_utf8to16(char const * aUtf8string)
-
 {
 		static wchar_t * lUtf16string = NULL;
 		int lSize;
@@ -831,7 +824,6 @@ static wchar_t * tinyfd_utf8to16(char const * aUtf8string)
 }
 
 static char * tinyfd_utf16toMbcs(wchar_t const * aUtf16string)
-
 {
 		static char * lMbcsString = NULL;
 		int lSize;
@@ -849,7 +841,6 @@ static char * tinyfd_utf16toMbcs(wchar_t const * aUtf16string)
 }
 
 static char * tinyfd_utf8toMbcs(char const * aUtf8string)
-
 {
 		wchar_t const * lUtf16string;
 		lUtf16string = tinyfd_utf8to16(aUtf8string);
@@ -857,7 +848,6 @@ static char * tinyfd_utf8toMbcs(char const * aUtf8string)
 }
 
 static char * tinyfd_utf16to8(wchar_t const * aUtf16string)
-
 {
 		static char * lUtf8string = NULL;
 		int lSize;
@@ -875,7 +865,6 @@ static char * tinyfd_utf16to8(wchar_t const * aUtf16string)
 }
 
 static char * tinyfd_mbcsTo8(char const * aMbcsString)
-
 {
 		wchar_t const * lUtf16string;
 		lUtf16string = tinyfd_mbcsTo16(aMbcsString);
@@ -883,7 +872,6 @@ static char * tinyfd_mbcsTo8(char const * aMbcsString)
 }
 
 static void tinyfd_beep(void)
-
 {
 	if (windowsVersion() > 5) Beep(440, 300);
 	else MessageBeep(MB_OK);
@@ -1256,7 +1244,6 @@ static void hiddenConsoleW(wchar_t const * aString, wchar_t const * aDialogTitle
 }
 
 static int tinyfd_messageBoxW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aMessage, 
 		wchar_t const * aDialogType, 
@@ -1344,7 +1331,6 @@ static int tinyfd_messageBoxW(
 }
 
 static int tinyfd_notifyPopupW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aMessage, 
 		wchar_t const * aIconType) 
@@ -1395,7 +1381,6 @@ static int tinyfd_notifyPopupW(
 }
 
 static wchar_t * tinyfd_inputBoxW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aMessage, 
 		wchar_t const * aDefaultInput) 
@@ -1586,7 +1571,6 @@ static wchar_t * tinyfd_inputBoxW(
 }
 
 static wchar_t * tinyfd_saveFileDialogW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultPathAndFile, 
 		int aNumOfFilterPatterns, 
@@ -1688,7 +1672,6 @@ static wchar_t * tinyfd_saveFileDialogW(
 }
 
 static wchar_t * tinyfd_openFileDialogW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultPathAndFile, 
 		int aNumOfFilterPatterns, 
@@ -1856,7 +1839,6 @@ static wchar_t * tinyfd_openFileDialogW(
 }
 
 static BOOL CALLBACK BrowseCallbackProcW_enum(HWND hWndChild, LPARAM lParam)
-
 {
 	wchar_t buf[255];
 	GetClassNameW(hWndChild, buf, sizeof(buf));
@@ -1883,7 +1865,6 @@ static int __stdcall BrowseCallbackProcW(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM
 }
 
 static wchar_t * tinyfd_selectFolderDialogW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultPath) 
 {
@@ -1932,7 +1913,6 @@ static wchar_t * tinyfd_selectFolderDialogW(
 }
 
 static wchar_t * tinyfd_colorChooserW(
-
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultHexRGB, 
 		unsigned char const aDefaultRGB[3], 
@@ -2775,7 +2755,6 @@ static void writeUtf8( char const * aUtf8String )
 }
 
 static int tinyfd_messageBox(
-
 		char const * aTitle, 
 		char const * aMessage, 
 		char const * aDialogType, 
@@ -2895,7 +2874,6 @@ static int tinyfd_messageBox(
 }
 
 static int tinyfd_notifyPopup(
-
 		char const * aTitle, 
 		char const * aMessage , 
 		char const * aIconType ) 
@@ -2916,7 +2894,6 @@ static int tinyfd_notifyPopup(
 }
 
 static char * tinyfd_inputBox(
-
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aDefaultInput ) 
@@ -3054,7 +3031,6 @@ static char * tinyfd_inputBox(
 }
 
 static char * tinyfd_saveFileDialog(
-
 		char const * aTitle , 
 		char const * aDefaultPathAndFile , 
 		int aNumOfFilterPatterns , 
@@ -3122,7 +3098,6 @@ static char * tinyfd_saveFileDialog(
 }
 
 static char * tinyfd_openFileDialog(
-
 	char const * aTitle , 
 		char const * aDefaultPathAndFile, 
 	int aNumOfFilterPatterns , 
@@ -3187,7 +3162,6 @@ static char * tinyfd_openFileDialog(
 }
 
 static char * tinyfd_selectFolderDialog(
-
 		char const * aTitle , 
 		char const * aDefaultPath ) 
 {
@@ -3232,7 +3206,6 @@ static char * tinyfd_selectFolderDialog(
 }
 
 static char * tinyfd_colorChooser(
-
 		char const * aTitle, 
 		char const * aDefaultHexRGB, 
 		unsigned char const aDefaultRGB[3], 
@@ -3311,7 +3284,6 @@ static char gPython3Name[16];
 static char gPythonName[16];
 
 static int tfd_isDarwin(void)
-
 {
 		static int lsIsDarwin = -1 ;
 		struct utsname lUtsname ;
@@ -3466,7 +3438,6 @@ static char * dialogNameOnly(void)
 }
 
 static int isDialogVersionBetter09b(void)
-
 {
 		char const * lDialogName ;
 		char * lVersion ;
@@ -3884,7 +3855,6 @@ static int dunstPresent(void)
 }
 
 static int tfd_qarmaPresent(void)
-
 {
 		static int lQarmaPresent = -1 ;
 		if ( lQarmaPresent < 0 )
@@ -3895,7 +3865,6 @@ static int tfd_qarmaPresent(void)
 }
 
 static int tfd_matedialogPresent(void)
-
 {
 		static int lMatedialogPresent = -1 ;
 		if ( lMatedialogPresent < 0 )
@@ -3906,7 +3875,6 @@ static int tfd_matedialogPresent(void)
 }
 
 static int tfd_shellementaryPresent(void)
-
 {
 		static int lShellementaryPresent = -1 ;
 		if ( lShellementaryPresent < 0 )
@@ -3917,7 +3885,6 @@ static int tfd_shellementaryPresent(void)
 }
 
 static int tfd_xpropPresent(void)
-
 {
 		static int lXpropPresent = -1 ;
 		if ( lXpropPresent < 0 )
@@ -3928,7 +3895,6 @@ static int tfd_xpropPresent(void)
 }
 
 static int tfd_zenityPresent(void)
-
 {
 		static int lZenityPresent = -1 ;
 		if ( lZenityPresent < 0 )
@@ -3939,7 +3905,6 @@ static int tfd_zenityPresent(void)
 }
 
 static int tfd_yadPresent(void)
-
 {
    static int lYadPresent = -1;
    if (lYadPresent < 0)
@@ -3950,7 +3915,6 @@ static int tfd_yadPresent(void)
 }
 
 static int tfd_zenity3Present(void)
-
 {
 		static int lZenity3Present = -1 ;
 		char lBuff[MAX_PATH_OR_CMD] ;
@@ -3991,7 +3955,6 @@ static int tfd_zenity3Present(void)
 }
 
 static int tfd_kdialogPresent(void)
-
 {
 		static int lKdialogPresent = -1 ;
 		char lBuff[MAX_PATH_OR_CMD] ;
@@ -4184,7 +4147,6 @@ static void sigHandler(int signum)
 }
 
 static void tinyfd_beep(void)
-
 {
 		char lDialogString[256] ;
 		FILE * lIn ;
@@ -4242,7 +4204,6 @@ static void tinyfd_beep(void)
 }
 
 static int tinyfd_messageBox(
-
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aDialogType , 
@@ -5205,7 +5166,6 @@ static int tinyfd_messageBox(
 }
 
 static int tinyfd_notifyPopup(
-
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aIconType ) 
@@ -5424,7 +5384,6 @@ aIconType?aIconType:"", aTitle?aTitle:"", aMessage?aMessage:"" ) ;
 }
 
 static char * tinyfd_inputBox(
-
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aDefaultInput ) 
@@ -6001,7 +5960,6 @@ static char * tinyfd_inputBox(
 }
 
 static char * tinyfd_saveFileDialog(
-
 	char const * aTitle , 
 	char const * aDefaultPathAndFile , 
 	int aNumOfFilterPatterns , 
@@ -6447,7 +6405,6 @@ static char * tinyfd_saveFileDialog(
 }
 
 static char * tinyfd_openFileDialog(
-
 		char const * aTitle , 
 		char const * aDefaultPathAndFile , 
 	int aNumOfFilterPatterns , 
@@ -6995,7 +6952,6 @@ static char * tinyfd_openFileDialog(
 }
 
 static char * tinyfd_selectFolderDialog(
-
 		char const * aTitle , 
 		char const * aDefaultPath ) 
 {
@@ -7293,7 +7249,6 @@ static char * tinyfd_selectFolderDialog(
 }
 
 static char * tinyfd_colorChooser(
-
 		char const * aTitle , 
 		char const * aDefaultHexRGB , 
 		unsigned char const aDefaultRGB[3] , 
@@ -7610,7 +7565,6 @@ static char * tinyfd_colorChooser(
 #endif 
 
 static void tfd_messageBox(
-
 	char const * aTitle ,
 	char const * aMessage ,
 	char const * aDialogType ,
@@ -7621,7 +7575,6 @@ static void tfd_messageBox(
 }
 
 static void tfd_inputBox(
-
 	char const * aTitle ,
 	char const * aMessage ,
 	char * * aiDefaultInput )
@@ -7635,7 +7588,6 @@ static void tfd_inputBox(
 }
 
 static void tfd_saveFileDialog(
-
 	char const * aTitle ,
 	char * * aiDefaultPathAndFile ,
 	int const * aNumOfFilterPatterns ,
@@ -7651,7 +7603,6 @@ static void tfd_saveFileDialog(
 }
 
 static void tfd_openFileDialog(
-
 	char const * aTitle ,
 	char * * aiDefaultPathAndFile ,
 	int const * aNumOfFilterPatterns ,
@@ -7669,7 +7620,6 @@ static void tfd_openFileDialog(
 }
 
 static void tfd_selectFolderDialog(
-
 	char const * aTitle ,
 	char * * aiDefaultPath )
 {
@@ -7680,7 +7630,6 @@ static void tfd_selectFolderDialog(
 }
 
 static void tfd_colorChooser(
-
 	char const * aTitle ,
 	char * * aiDefaultHexRGB )
 {
