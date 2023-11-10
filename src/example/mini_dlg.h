@@ -62,6 +62,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #undef MINI_DLG_IMPLEMENTATION
 #endif
 
-#include "../mini_dlg_flat.h"
+#include "../releases/mini_dlg_flat.h"
 
 #endif

@@ -37,7 +37,7 @@ an include for the .h file where you would like to use it. In addition, have
 _exactly one_ C/C++ source file where you define the `MINI_DLG_IMPLEMENTATION`
 macro, which will enable the function definitions and instantiate the code.
 
-We have the flat, single-header file in the Releases page of this repository.
+We provide the single-header file in `src/releases` folder in this repository.
 It is recommended that you use this version, as it is very similar to what we 
 use internally for Oxymora, but you can always run `python3 minify.py` if you 
 would like to generate the header for yourself.

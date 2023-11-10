@@ -53,7 +53,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <stddef.h>
-#include <stdint.h>
 
 static inline void* debug_malloc( size_t size, const char* file, const char* function, int line );
 static inline void* debug_realloc( void* ptr, size_t size, const char* file, const char* function, int line );
@@ -66,7 +65,7 @@ static inline void debug_free( void* ptr, const char* file, const char* function
 
 // Here is an example usage of the MINI_DLG_IMPLEMENTATION macro
 #define MINI_DLG_IMPLEMENTATION
-#include "../mini_dlg_flat.h"
+#include "../releases/mini_dlg_flat.h"
 #undef MINI_DLG_IMPLEMENTATION
 
 // Malloc with extra arguments for logging information
@@ -96,9 +95,6 @@ void debug_free( void* ptr, const char* file, const char* function, int line ) {
    free( ptr );
 
    char buffer[512];
-
-   uintptr_t p = ( uintptr_t ) ptr;
-
-   sprintf( buffer, "[MEMORY] free(0x%llx), %s, %s:%i\n", p, file, function, line );
+   sprintf( buffer, "[MEMORY] free(%p), %s, %s:%i\n", ptr, file, function, line );
    fputs( buffer, stdout );
 }

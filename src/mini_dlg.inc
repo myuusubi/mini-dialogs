@@ -112,7 +112,7 @@ int mini_dlg_message_box( char const* title, char const* msg, int msg_type, int 
 
 	return result;
 #else
-	return tinyfd_messageBox( w_title, w_msg, msg_type_string, icon_type_string, default_button );
+	return tinyfd_messageBox( title, msg, msg_type_string, icon_type_string, default_button );
 #endif
 }
 

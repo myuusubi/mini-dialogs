@@ -384,6 +384,6 @@ mini_dlg_text += mini_dlg_source_file.read()
 mini_dlg_source_file.close()
 
 # Write the flat file to disk
-mini_dlg_file = open( os.path.join( "src", "mini_dlg_flat.h" ), "w" )
+mini_dlg_file = open( os.path.join( "src", "releases", "mini_dlg_flat.h" ), "w" )
 mini_dlg_file.write( mini_dlg_text )
 mini_dlg_file.close()
