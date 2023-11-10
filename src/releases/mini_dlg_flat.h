@@ -658,22 +658,13 @@ static int tfd_quoteDetected(char const * aString)
 char const * tinyfd_getGlobalChar(char const * aCharVariableName) 
 {
 		if (!aCharVariableName || !strlen(aCharVariableName)) return NULL;
-//		else if (!strcmp(aCharVariableName, "tinyfd_version")) return tinyfd_version;
-//		else if (!strcmp(aCharVariableName, "tinyfd_needs")) return tinyfd_needs;
-//		else if (!strcmp(aCharVariableName, "tinyfd_response")) return tinyfd_response;
 		else return NULL ;
 }
 
 int tinyfd_getGlobalInt(char const * aIntVariableName) 
 {
 		if ( !aIntVariableName || !strlen(aIntVariableName) ) return -1 ;
-//		else if ( !strcmp(aIntVariableName, "tinyfd_verbose") ) return tinyfd_verbose ;
-//		else if ( !strcmp(aIntVariableName, "tinyfd_silent") ) return tinyfd_silent ;
-//		else if ( !strcmp(aIntVariableName, "tinyfd_allowCursesDialogs") ) return tinyfd_allowCursesDialogs ;
-//		else if ( !strcmp(aIntVariableName, "tinyfd_forceConsole") ) return tinyfd_forceConsole ;
-//		else if ( !strcmp(aIntVariableName, "tinyfd_assumeGraphicDisplay") ) return tinyfd_assumeGraphicDisplay ;
 #ifdef _WIN32
-//		else if ( !strcmp(aIntVariableName, "tinyfd_winUtf8") ) return tinyfd_winUtf8 ;
 #endif
 		else return -1;
 }
@@ -681,13 +672,7 @@ int tinyfd_getGlobalInt(char const * aIntVariableName)
 int tinyfd_setGlobalInt(char const * aIntVariableName, int aValue) 
 {
 		if (!aIntVariableName || !strlen(aIntVariableName)) return -1 ;
-//		else if (!strcmp(aIntVariableName, "tinyfd_verbose")) { tinyfd_verbose = aValue; return tinyfd_verbose; }
-//		else if (!strcmp(aIntVariableName, "tinyfd_silent")) { tinyfd_silent = aValue; return tinyfd_silent; }
-//		else if (!strcmp(aIntVariableName, "tinyfd_allowCursesDialogs")) { tinyfd_allowCursesDialogs = aValue; return tinyfd_allowCursesDialogs; }
-//		else if (!strcmp(aIntVariableName, "tinyfd_forceConsole")) { tinyfd_forceConsole = aValue; return tinyfd_forceConsole; }
-//		else if (!strcmp(aIntVariableName, "tinyfd_assumeGraphicDisplay")) { tinyfd_assumeGraphicDisplay = aValue; return tinyfd_assumeGraphicDisplay; }
 #ifdef _WIN32
-//		else if (!strcmp(aIntVariableName, "tinyfd_winUtf8")) { tinyfd_winUtf8 = aValue; return tinyfd_winUtf8; }
 #endif
 		else return -1;
 }

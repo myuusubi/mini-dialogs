@@ -272,7 +272,7 @@ def clean_line_source( line ):
 		if symbol_idx_2 >= 0:
 			symbol_string = '"' + symbol + '"'
 			if ( line[symbol_idx - 1:symbol_idx + symbol_len + 1] == symbol_string ) or ( line[symbol_idx_2 - 1:symbol_idx_2 + symbol_len + 1] == symbol_string ):
-				return "//" + line
+				return ""
 			continue
 		equal_idx = line.find( "=" )
 		if equal_idx < 0:
@@ -336,7 +336,6 @@ def make_line_static( text ):
 		return text
 	if stext[:6] == "static":
 		return text
-	print( stext )
 	return "static " + stext + "\n"
 
 def make_static( text ):
