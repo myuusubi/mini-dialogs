@@ -538,7 +538,8 @@ static void RGB2Hex( unsigned char const aRGB[3], char aoResultHexRGB[8] )
 		}
 }
 
-void tfd_replaceSubStr( char const * aSource, char const * aOldSubStr,
+static void tfd_replaceSubStr( char const * aSource, char const * aOldSubStr,
+
 						char const * aNewSubStr, char * aoDestination )
 {
 		char const * pOccurence ;
@@ -621,7 +622,8 @@ static void wipefile(char const * aFilename)
 		}
 }
 
-int tfd_quoteDetected(char const * aString)
+static int tfd_quoteDetected(char const * aString)
+
 {
 	char const * p;
 
@@ -656,22 +658,22 @@ int tfd_quoteDetected(char const * aString)
 char const * tinyfd_getGlobalChar(char const * aCharVariableName) 
 {
 		if (!aCharVariableName || !strlen(aCharVariableName)) return NULL;
-// 		else if (!strcmp(aCharVariableName, "tinyfd_version")) return tinyfd_version;
-// 		else if (!strcmp(aCharVariableName, "tinyfd_needs")) return tinyfd_needs;
-// 		else if (!strcmp(aCharVariableName, "tinyfd_response")) return tinyfd_response;
+//		else if (!strcmp(aCharVariableName, "tinyfd_version")) return tinyfd_version;
+//		else if (!strcmp(aCharVariableName, "tinyfd_needs")) return tinyfd_needs;
+//		else if (!strcmp(aCharVariableName, "tinyfd_response")) return tinyfd_response;
 		else return NULL ;
 }
 
 int tinyfd_getGlobalInt(char const * aIntVariableName) 
 {
 		if ( !aIntVariableName || !strlen(aIntVariableName) ) return -1 ;
-// 		else if ( !strcmp(aIntVariableName, "tinyfd_verbose") ) return tinyfd_verbose ;
-// 		else if ( !strcmp(aIntVariableName, "tinyfd_silent") ) return tinyfd_silent ;
-// 		else if ( !strcmp(aIntVariableName, "tinyfd_allowCursesDialogs") ) return tinyfd_allowCursesDialogs ;
-// 		else if ( !strcmp(aIntVariableName, "tinyfd_forceConsole") ) return tinyfd_forceConsole ;
-// 		else if ( !strcmp(aIntVariableName, "tinyfd_assumeGraphicDisplay") ) return tinyfd_assumeGraphicDisplay ;
+//		else if ( !strcmp(aIntVariableName, "tinyfd_verbose") ) return tinyfd_verbose ;
+//		else if ( !strcmp(aIntVariableName, "tinyfd_silent") ) return tinyfd_silent ;
+//		else if ( !strcmp(aIntVariableName, "tinyfd_allowCursesDialogs") ) return tinyfd_allowCursesDialogs ;
+//		else if ( !strcmp(aIntVariableName, "tinyfd_forceConsole") ) return tinyfd_forceConsole ;
+//		else if ( !strcmp(aIntVariableName, "tinyfd_assumeGraphicDisplay") ) return tinyfd_assumeGraphicDisplay ;
 #ifdef _WIN32
-// 		else if ( !strcmp(aIntVariableName, "tinyfd_winUtf8") ) return tinyfd_winUtf8 ;
+//		else if ( !strcmp(aIntVariableName, "tinyfd_winUtf8") ) return tinyfd_winUtf8 ;
 #endif
 		else return -1;
 }
@@ -679,13 +681,13 @@ int tinyfd_getGlobalInt(char const * aIntVariableName)
 int tinyfd_setGlobalInt(char const * aIntVariableName, int aValue) 
 {
 		if (!aIntVariableName || !strlen(aIntVariableName)) return -1 ;
-// 		else if (!strcmp(aIntVariableName, "tinyfd_verbose")) { tinyfd_verbose = aValue; return tinyfd_verbose; }
-// 		else if (!strcmp(aIntVariableName, "tinyfd_silent")) { tinyfd_silent = aValue; return tinyfd_silent; }
-// 		else if (!strcmp(aIntVariableName, "tinyfd_allowCursesDialogs")) { tinyfd_allowCursesDialogs = aValue; return tinyfd_allowCursesDialogs; }
-// 		else if (!strcmp(aIntVariableName, "tinyfd_forceConsole")) { tinyfd_forceConsole = aValue; return tinyfd_forceConsole; }
-// 		else if (!strcmp(aIntVariableName, "tinyfd_assumeGraphicDisplay")) { tinyfd_assumeGraphicDisplay = aValue; return tinyfd_assumeGraphicDisplay; }
+//		else if (!strcmp(aIntVariableName, "tinyfd_verbose")) { tinyfd_verbose = aValue; return tinyfd_verbose; }
+//		else if (!strcmp(aIntVariableName, "tinyfd_silent")) { tinyfd_silent = aValue; return tinyfd_silent; }
+//		else if (!strcmp(aIntVariableName, "tinyfd_allowCursesDialogs")) { tinyfd_allowCursesDialogs = aValue; return tinyfd_allowCursesDialogs; }
+//		else if (!strcmp(aIntVariableName, "tinyfd_forceConsole")) { tinyfd_forceConsole = aValue; return tinyfd_forceConsole; }
+//		else if (!strcmp(aIntVariableName, "tinyfd_assumeGraphicDisplay")) { tinyfd_assumeGraphicDisplay = aValue; return tinyfd_assumeGraphicDisplay; }
 #ifdef _WIN32
-// 		else if (!strcmp(aIntVariableName, "tinyfd_winUtf8")) { tinyfd_winUtf8 = aValue; return tinyfd_winUtf8; }
+//		else if (!strcmp(aIntVariableName, "tinyfd_winUtf8")) { tinyfd_winUtf8 = aValue; return tinyfd_winUtf8; }
 #endif
 		else return -1;
 }
@@ -1395,7 +1397,8 @@ int tinyfd_notifyPopupW(
 		return 1;
 }
 
-wchar_t * tinyfd_inputBoxW(
+static wchar_t * tinyfd_inputBoxW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aMessage, 
 		wchar_t const * aDefaultInput) 
@@ -1585,7 +1588,8 @@ wchar_t * tinyfd_inputBoxW(
 #endif
 }
 
-wchar_t * tinyfd_saveFileDialogW(
+static wchar_t * tinyfd_saveFileDialogW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultPathAndFile, 
 		int aNumOfFilterPatterns, 
@@ -1686,7 +1690,8 @@ wchar_t * tinyfd_saveFileDialogW(
 		return lRetval;
 }
 
-wchar_t * tinyfd_openFileDialogW(
+static wchar_t * tinyfd_openFileDialogW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultPathAndFile, 
 		int aNumOfFilterPatterns, 
@@ -1853,7 +1858,8 @@ wchar_t * tinyfd_openFileDialogW(
 		return lBuff;
 }
 
-BOOL CALLBACK BrowseCallbackProcW_enum(HWND hWndChild, LPARAM lParam)
+static BOOL CALLBACK BrowseCallbackProcW_enum(HWND hWndChild, LPARAM lParam)
+
 {
 	wchar_t buf[255];
 	GetClassNameW(hWndChild, buf, sizeof(buf));
@@ -1879,7 +1885,8 @@ static int __stdcall BrowseCallbackProcW(HWND hwnd, UINT uMsg, LPARAM lp, LPARAM
 	return 0;
 }
 
-wchar_t * tinyfd_selectFolderDialogW(
+static wchar_t * tinyfd_selectFolderDialogW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultPath) 
 {
@@ -1927,7 +1934,8 @@ wchar_t * tinyfd_selectFolderDialogW(
 				return lRetval;
 }
 
-wchar_t * tinyfd_colorChooserW(
+static wchar_t * tinyfd_colorChooserW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aDefaultHexRGB, 
 		unsigned char const aDefaultRGB[3], 
@@ -2769,7 +2777,8 @@ static void writeUtf8( char const * aUtf8String )
 		(void)WriteConsoleW(lConsoleHandle, lTmpWChar, (DWORD) wcslen(lTmpWChar), &lNum, NULL);
 }
 
-int tinyfd_messageBox(
+static int tinyfd_messageBox(
+
 		char const * aTitle, 
 		char const * aMessage, 
 		char const * aDialogType, 
@@ -2888,7 +2897,8 @@ int tinyfd_messageBox(
 		}
 }
 
-int tinyfd_notifyPopup(
+static int tinyfd_notifyPopup(
+
 		char const * aTitle, 
 		char const * aMessage , 
 		char const * aIconType ) 
@@ -2908,7 +2918,8 @@ int tinyfd_notifyPopup(
 			return tinyfd_messageBox(aTitle, aMessage, "ok" , aIconType, 0);
 }
 
-char * tinyfd_inputBox(
+static char * tinyfd_inputBox(
+
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aDefaultInput ) 
@@ -3045,7 +3056,8 @@ char * tinyfd_inputBox(
 		}
 }
 
-char * tinyfd_saveFileDialog(
+static char * tinyfd_saveFileDialog(
+
 		char const * aTitle , 
 		char const * aDefaultPathAndFile , 
 		int aNumOfFilterPatterns , 
@@ -3112,7 +3124,8 @@ char * tinyfd_saveFileDialog(
 		return p ;
 }
 
-char * tinyfd_openFileDialog(
+static char * tinyfd_openFileDialog(
+
 	char const * aTitle , 
 		char const * aDefaultPathAndFile, 
 	int aNumOfFilterPatterns , 
@@ -3176,7 +3189,8 @@ char * tinyfd_openFileDialog(
 		return p ;
 }
 
-char * tinyfd_selectFolderDialog(
+static char * tinyfd_selectFolderDialog(
+
 		char const * aTitle , 
 		char const * aDefaultPath ) 
 {
@@ -3220,7 +3234,8 @@ char * tinyfd_selectFolderDialog(
 		return p ;
 }
 
-char * tinyfd_colorChooser(
+static char * tinyfd_colorChooser(
+
 		char const * aTitle, 
 		char const * aDefaultHexRGB, 
 		unsigned char const aDefaultRGB[3], 
@@ -3298,7 +3313,8 @@ static char gPython2Name[16];
 static char gPython3Name[16];
 static char gPythonName[16];
 
-int tfd_isDarwin(void)
+static int tfd_isDarwin(void)
+
 {
 		static int lsIsDarwin = -1 ;
 		struct utsname lUtsname ;
@@ -3452,7 +3468,8 @@ static char * dialogNameOnly(void)
 		return lDialogName ;
 }
 
-int isDialogVersionBetter09b(void)
+static int isDialogVersionBetter09b(void)
+
 {
 		char const * lDialogName ;
 		char * lVersion ;
@@ -3869,7 +3886,8 @@ static int dunstPresent(void)
 	return lDunstPresent && graphicMode( ) ;
 }
 
-int tfd_qarmaPresent(void)
+static int tfd_qarmaPresent(void)
+
 {
 		static int lQarmaPresent = -1 ;
 		if ( lQarmaPresent < 0 )
@@ -3879,7 +3897,8 @@ int tfd_qarmaPresent(void)
 		return lQarmaPresent && graphicMode( ) ;
 }
 
-int tfd_matedialogPresent(void)
+static int tfd_matedialogPresent(void)
+
 {
 		static int lMatedialogPresent = -1 ;
 		if ( lMatedialogPresent < 0 )
@@ -3889,7 +3908,8 @@ int tfd_matedialogPresent(void)
 		return lMatedialogPresent && graphicMode( ) ;
 }
 
-int tfd_shellementaryPresent(void)
+static int tfd_shellementaryPresent(void)
+
 {
 		static int lShellementaryPresent = -1 ;
 		if ( lShellementaryPresent < 0 )
@@ -3899,7 +3919,8 @@ int tfd_shellementaryPresent(void)
 		return lShellementaryPresent && graphicMode( ) ;
 }
 
-int tfd_xpropPresent(void)
+static int tfd_xpropPresent(void)
+
 {
 		static int lXpropPresent = -1 ;
 		if ( lXpropPresent < 0 )
@@ -3909,7 +3930,8 @@ int tfd_xpropPresent(void)
 		return lXpropPresent && graphicMode( ) ;
 }
 
-int tfd_zenityPresent(void)
+static int tfd_zenityPresent(void)
+
 {
 		static int lZenityPresent = -1 ;
 		if ( lZenityPresent < 0 )
@@ -3919,7 +3941,8 @@ int tfd_zenityPresent(void)
 		return lZenityPresent && graphicMode( ) ;
 }
 
-int tfd_yadPresent(void)
+static int tfd_yadPresent(void)
+
 {
    static int lYadPresent = -1;
    if (lYadPresent < 0)
@@ -3929,7 +3952,8 @@ int tfd_yadPresent(void)
    return lYadPresent && graphicMode();
 }
 
-int tfd_zenity3Present(void)
+static int tfd_zenity3Present(void)
+
 {
 		static int lZenity3Present = -1 ;
 		char lBuff[MAX_PATH_OR_CMD] ;
@@ -3969,7 +3993,8 @@ int tfd_zenity3Present(void)
 		return graphicMode() ? lZenity3Present : 0 ;
 }
 
-int tfd_kdialogPresent(void)
+static int tfd_kdialogPresent(void)
+
 {
 		static int lKdialogPresent = -1 ;
 		char lBuff[MAX_PATH_OR_CMD] ;
@@ -4161,7 +4186,8 @@ static void sigHandler(int signum)
 				if (tinyfd_verbose) printf("tinyfiledialogs caught signal %d\n", signum);
 }
 
-void tinyfd_beep(void)
+static void tinyfd_beep(void)
+
 {
 		char lDialogString[256] ;
 		FILE * lIn ;
@@ -4218,7 +4244,8 @@ void tinyfd_beep(void)
 		}
 }
 
-int tinyfd_messageBox(
+static int tinyfd_messageBox(
+
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aDialogType , 
@@ -5180,7 +5207,8 @@ int tinyfd_messageBox(
 		return lResult ;
 }
 
-int tinyfd_notifyPopup(
+static int tinyfd_notifyPopup(
+
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aIconType ) 
@@ -5398,7 +5426,8 @@ aIconType?aIconType:"", aTitle?aTitle:"", aMessage?aMessage:"" ) ;
 		return 1;
 }
 
-char * tinyfd_inputBox(
+static char * tinyfd_inputBox(
+
 		char const * aTitle , 
 		char const * aMessage , 
 		char const * aDefaultInput ) 
@@ -5974,7 +6003,8 @@ char * tinyfd_inputBox(
 		return lBuff+1 ;
 }
 
-char * tinyfd_saveFileDialog(
+static char * tinyfd_saveFileDialog(
+
 	char const * aTitle , 
 	char const * aDefaultPathAndFile , 
 	int aNumOfFilterPatterns , 
@@ -6419,7 +6449,8 @@ char * tinyfd_saveFileDialog(
 	return lBuff ;
 }
 
-char * tinyfd_openFileDialog(
+static char * tinyfd_openFileDialog(
+
 		char const * aTitle , 
 		char const * aDefaultPathAndFile , 
 	int aNumOfFilterPatterns , 
@@ -6966,7 +6997,8 @@ char * tinyfd_openFileDialog(
 				return lBuff ;
 }
 
-char * tinyfd_selectFolderDialog(
+static char * tinyfd_selectFolderDialog(
+
 		char const * aTitle , 
 		char const * aDefaultPath ) 
 {
@@ -7263,7 +7295,8 @@ char * tinyfd_selectFolderDialog(
 		return lBuff ;
 }
 
-char * tinyfd_colorChooser(
+static char * tinyfd_colorChooser(
+
 		char const * aTitle , 
 		char const * aDefaultHexRGB , 
 		unsigned char const aDefaultRGB[3] , 
@@ -7579,7 +7612,8 @@ char * tinyfd_colorChooser(
 
 #endif 
 
-void tfd_messageBox(
+static void tfd_messageBox(
+
 	char const * aTitle ,
 	char const * aMessage ,
 	char const * aDialogType ,
@@ -7589,7 +7623,8 @@ void tfd_messageBox(
 	* aiDefaultButton = tinyfd_messageBox( aTitle , aMessage , aDialogType , aIconType , * aiDefaultButton ) ;
 }
 
-void tfd_inputBox(
+static void tfd_inputBox(
+
 	char const * aTitle ,
 	char const * aMessage ,
 	char * * aiDefaultInput )
@@ -7602,7 +7637,8 @@ void tfd_inputBox(
 	else strcpy ( * aiDefaultInput , "NULL" ) ;
 }
 
-void tfd_saveFileDialog(
+static void tfd_saveFileDialog(
+
 	char const * aTitle ,
 	char * * aiDefaultPathAndFile ,
 	int const * aNumOfFilterPatterns ,
@@ -7617,7 +7653,8 @@ void tfd_saveFileDialog(
 	else strcpy ( * aiDefaultPathAndFile , "NULL" ) ;
 }
 
-void tfd_openFileDialog(
+static void tfd_openFileDialog(
+
 	char const * aTitle ,
 	char * * aiDefaultPathAndFile ,
 	int const * aNumOfFilterPatterns ,
@@ -7634,7 +7671,8 @@ void tfd_openFileDialog(
 	else strcpy ( * aiDefaultPathAndFile , "NULL" ) ;
 }
 
-void tfd_selectFolderDialog(
+static void tfd_selectFolderDialog(
+
 	char const * aTitle ,
 	char * * aiDefaultPath )
 {
@@ -7644,7 +7682,8 @@ void tfd_selectFolderDialog(
 	else strcpy ( * aiDefaultPath , "NULL" ) ;
 }
 
-void tfd_colorChooser(
+static void tfd_colorChooser(
+
 	char const * aTitle ,
 	char * * aiDefaultHexRGB )
 {

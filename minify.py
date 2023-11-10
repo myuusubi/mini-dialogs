@@ -272,7 +272,7 @@ def clean_line_source( line ):
 		if symbol_idx_2 >= 0:
 			symbol_string = '"' + symbol + '"'
 			if ( line[symbol_idx - 1:symbol_idx + symbol_len + 1] == symbol_string ) or ( line[symbol_idx_2 - 1:symbol_idx_2 + symbol_len + 1] == symbol_string ):
-				return "// " + line
+				return "//" + line
 			continue
 		equal_idx = line.find( "=" )
 		if equal_idx < 0:
@@ -326,6 +326,70 @@ def condense_newlines( text, is_header = True ):
 		ci += 1
 	return condensed
 
+def make_line_static( text ):
+	stext = text.strip()
+	if len( stext ) == 0:
+		return ""
+	if stext[0] == '#':
+		return text
+	if stext.find( '(' ) < 0:
+		return text
+	if stext[:6] == "static":
+		return text
+	print( stext )
+	return "static " + stext + "\n"
+
+def make_static( text ):
+	scope_line = ""
+	scope = 0
+
+	in_string = False
+
+	static_text = ""
+
+	text_length = len( text )
+	ci = 0
+	while ci < text_length:
+		c = text[ci]
+		if in_string:
+			static_text += c
+			if c == '\\':
+				ci += 1
+				c = text[ci]
+				static_text += c
+			elif c == '"':
+				in_string = False
+			ci += 1
+			continue
+
+		if c == '"':
+			static_text += make_line_static( scope_line ) + '"'
+			scope_line = ""
+			in_string = True
+			ci += 1
+			continue
+		
+		if c == '{':
+			if scope == 0:
+				static_text += make_line_static( scope_line )
+				scope_line = ""
+			scope += 1
+		elif c == '}':
+			scope -= 1
+			if scope == 0:
+				static_text += '}'
+				scope_line = ""
+		elif scope <= 0:
+			if c == '\n':
+				static_text += make_line_static( scope_line ) + "\n"
+				scope_line = ""
+			else:
+				scope_line += c
+		if scope > 0:
+			static_text += c
+		ci += 1
+	return static_text
+
 # Remove comments & multi-line strings from header & source
 parsed_header = minify_text( tinyfd_header_text )
 parsed_source = minify_text( tinyfd_source_text )
@@ -342,6 +406,7 @@ extern_symbol_list_len = len( extern_symbol_list )
 
 # Remove extraneous newlines and change extern variables to const
 parsed_source = condense_newlines( parsed_source, is_header = False )
+parsed_source = make_static( parsed_source )
 
 # Read the MiniDLG header into the beginning of the flat file
 mini_dlg_header_file = open( os.path.join( "src", "mini_dlg.h" ), "r" )
