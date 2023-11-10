@@ -655,13 +655,15 @@ static int tfd_quoteDetected(char const * aString)
 	return 0;
 }
 
-char const * tinyfd_getGlobalChar(char const * aCharVariableName) 
+static char const * tinyfd_getGlobalChar(char const * aCharVariableName)
+
 {
 		if (!aCharVariableName || !strlen(aCharVariableName)) return NULL;
 		else return NULL ;
 }
 
-int tinyfd_getGlobalInt(char const * aIntVariableName) 
+static int tinyfd_getGlobalInt(char const * aIntVariableName)
+
 {
 		if ( !aIntVariableName || !strlen(aIntVariableName) ) return -1 ;
 #ifdef _WIN32
@@ -669,7 +671,8 @@ int tinyfd_getGlobalInt(char const * aIntVariableName)
 		else return -1;
 }
 
-int tinyfd_setGlobalInt(char const * aIntVariableName, int aValue) 
+static int tinyfd_setGlobalInt(char const * aIntVariableName, int aValue)
+
 {
 		if (!aIntVariableName || !strlen(aIntVariableName)) return -1 ;
 #ifdef _WIN32
@@ -785,7 +788,8 @@ static int sizeMbcs(wchar_t const * aMbcsString)
 		return lRes;
 }
 
-wchar_t* tinyfd_mbcsTo16(char const* aMbcsString)
+static wchar_t* tinyfd_mbcsTo16(char const* aMbcsString)
+
 {
 	static wchar_t* lMbcsString = NULL;
 	int lSize;
@@ -802,7 +806,8 @@ wchar_t* tinyfd_mbcsTo16(char const* aMbcsString)
 	return lMbcsString;
 }
 
-wchar_t * tinyfd_utf8to16(char const * aUtf8string)
+static wchar_t * tinyfd_utf8to16(char const * aUtf8string)
+
 {
 		static wchar_t * lUtf16string = NULL;
 		int lSize;
@@ -825,7 +830,8 @@ wchar_t * tinyfd_utf8to16(char const * aUtf8string)
 	}
 }
 
-char * tinyfd_utf16toMbcs(wchar_t const * aUtf16string)
+static char * tinyfd_utf16toMbcs(wchar_t const * aUtf16string)
+
 {
 		static char * lMbcsString = NULL;
 		int lSize;
@@ -842,14 +848,16 @@ char * tinyfd_utf16toMbcs(wchar_t const * aUtf16string)
 		return lMbcsString;
 }
 
-char * tinyfd_utf8toMbcs(char const * aUtf8string)
+static char * tinyfd_utf8toMbcs(char const * aUtf8string)
+
 {
 		wchar_t const * lUtf16string;
 		lUtf16string = tinyfd_utf8to16(aUtf8string);
 		return tinyfd_utf16toMbcs(lUtf16string);
 }
 
-char * tinyfd_utf16to8(wchar_t const * aUtf16string)
+static char * tinyfd_utf16to8(wchar_t const * aUtf16string)
+
 {
 		static char * lUtf8string = NULL;
 		int lSize;
@@ -866,14 +874,16 @@ char * tinyfd_utf16to8(wchar_t const * aUtf16string)
 		return lUtf8string;
 }
 
-char * tinyfd_mbcsTo8(char const * aMbcsString)
+static char * tinyfd_mbcsTo8(char const * aMbcsString)
+
 {
 		wchar_t const * lUtf16string;
 		lUtf16string = tinyfd_mbcsTo16(aMbcsString);
 		return tinyfd_utf16to8(lUtf16string);
 }
 
-void tinyfd_beep(void)
+static void tinyfd_beep(void)
+
 {
 	if (windowsVersion() > 5) Beep(440, 300);
 	else MessageBeep(MB_OK);
@@ -1245,7 +1255,8 @@ static void hiddenConsoleW(wchar_t const * aString, wchar_t const * aDialogTitle
 		CloseHandle(ProcessInfo.hProcess);
 }
 
-int tinyfd_messageBoxW(
+static int tinyfd_messageBoxW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aMessage, 
 		wchar_t const * aDialogType, 
@@ -1332,7 +1343,8 @@ int tinyfd_messageBoxW(
 		}
 }
 
-int tinyfd_notifyPopupW(
+static int tinyfd_notifyPopupW(
+
 		wchar_t const * aTitle, 
 		wchar_t const * aMessage, 
 		wchar_t const * aIconType) 

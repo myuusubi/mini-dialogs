@@ -367,6 +367,16 @@ def make_static( text ):
 			in_string = True
 			ci += 1
 			continue
+
+		if c == '\\':
+			static_text += c
+			ci += 1
+			c = text[ci]
+			static_text += c
+			if scope == 0:
+				scope_line += '\\' + c
+			ci += 1
+			continue
 		
 		if c == '{':
 			if scope == 0:
